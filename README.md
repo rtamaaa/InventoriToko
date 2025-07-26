@@ -8,4 +8,7 @@ kalo udah, pastiin di semua folder sama isi file nya yang ada tulisan "mirnawati
 
 running deh... kalo error... copy logcatnya terus tanya chat gpt apa yg errornya
 
+
+jangan lupa ubah tampilannya di layout
+
 beres deh
