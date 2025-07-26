@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.mirnawati.inventory.model.RegisterResponse
 import com.mirnawati.inventory.network.ApiClient
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -55,8 +56,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         tvLogin.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+            goToLogin()
         }
     }
 
@@ -72,11 +72,10 @@ class RegisterActivity : AppCompatActivity() {
                         if (registerResponse != null && registerResponse.success) {
                             Toast.makeText(
                                 this@RegisterActivity,
-                                "Register berhasil: ${registerResponse.user.name}",
+                                registerResponse.message,
                                 Toast.LENGTH_SHORT
                             ).show()
-                            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
-                            finish()
+                            goToLogin()
                         } else {
                             Toast.makeText(
                                 this@RegisterActivity,
@@ -101,5 +100,11 @@ class RegisterActivity : AppCompatActivity() {
                     ).show()
                 }
             })
+    }
+
+    private fun goToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
